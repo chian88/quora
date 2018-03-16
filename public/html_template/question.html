@@ -24,8 +24,48 @@
             <input class="form-control col-12" type="search" placeholder="Search">
           </form>
 
-          <a class="nav-link btn-outline-primary btn mr-2" href="#">Chian Yee Standard</a>
-          <a class="nav-link btn-outline-danger btn btn-sm" href="#">Add Question</a>
+          <div class="btn-group">
+            <button type="button" class="btn btn-outline-primary">Chian Yee</button>
+            <button type="button" class="btn btn-outline-primary mr-2 dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Profile</a>
+              <a class="dropdown-item" href="#">Settings</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Logout</a>
+            </div>
+          </div>
+
+
+          <a class="nav-link btn-outline-danger btn btn-sm" data-toggle="modal" data-target="#questionModal" href="#">Add Question</a>
+
+          <!-- Modal -->
+          <div class="modal fade" id="questionModal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Please Ask Your Question</h5>
+                  <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <input type="text" class="form-control form-control-lg no-border-text" name="question" id="question" placeholder="Type Question Here.">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control form-control-sm" name="category" id="category" placeholder="AI, computer science, literature">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Add Question</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -112,7 +152,7 @@
       <div class="col-3">
         <h5>Related Questions</h5>
         <hr>
-        <ul class="txt-sm">
+        <ul>
           <li class="mb-3"><a href="#">What are some of the best ways to learn programming?</a></li>
           <li class="mb-3"><a href="#">What are some of the best ways to learn programming?</a></li>
           <li class="mb-3"><a href="#">What are some of the best ways to learn programming?</a></li>

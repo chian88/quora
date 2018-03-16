@@ -74,50 +74,97 @@
 </header>
 
 <main>
-  <div class="container py-3">
+  <div class="container p-3">
     <div class="row">
       <div class="col-3">
-
-
+        <h5>Settings</h5>
+        <hr>
         <ul>
-          <li><h6>Feeds</h6></li>
-          <hr>
-          <li><a href="#">Top Stories</a></li>
-          <li><a href="#">New </a></li>
-          <li><a href="#">Top Stories</a></li>
+          <li>Account</li>
+          <li>Topics Interested</li>
         </ul>
       </div>
-
-      <div class="col-7">
-        <div class="card mb-2">
-          <div class="card-body">
-            <h5 class="card-title"><a href="">How does a beginner start to learn machine learning?</a></h5>
-            <p>
-              <span class="badge badge-secondary">Technology</span>
-              <span class="badge badge-secondary">AI</span>
-            </p>
-            <p class="card-text mb-2 txt-sm">
-              David Stiennon, Software Consultant<br> 
-              <span class="text-muted">Answered Jun 11, 2017</span>
-            </p>
-            <p class="card-text">I can only answer this question in a personal way. In 1981, I was studying in a graduate program in India (Indian Institute of Technology, Kanpur), training to be an electrical engineer. I loved EE.</p>
+      <div class="col-6">
+        <h5>Account Settings</h5>
+        <hr>
+        <form>
+          <div class="form-group row">
+            <label for="email" class="col-3 col-form-label">Email</label>
+            <div class="col-9">
+              <input type="email" class="form-control" id="email" placeholder="Email">
+            </div>
           </div>
-        </div>
 
-        <div class="card mb-2">
-          <div class="card-body">
-            <h5 class="card-title"><a href="">How does a beginner start to learn machine learning?</a></h5>
-            <p>
-              <span class="badge badge-secondary">Technology</span>
-              <span class="badge badge-secondary">AI</span>
-            </p>
-            <p class="card-text mb-2 txt-sm">
-              David Stiennon, Software Consultant<br> 
-              <span class="text-muted">Answered Jun 11, 2017</span>
-            </p>
-            <p class="card-text">I can only answer this question in a personal way. In 1981, I was studying in a graduate program in India (Indian Institute of Technology, Kanpur), training to be an electrical engineer. I loved EE.</p>
+          <div class="form-group row">
+            <label for="password" class="col-3 col-form-label">Password</label>
+            <div class="col-9">
+              <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
           </div>
-        </div>
+
+          <div class="form-group row">
+            <label for="location" class="col-3 col-form-label">Location</label>
+            <div class="col-9">
+              <input type="text" class="form-control" id="location" placeholder="Location">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="description" class="col-3 col-form-label">Description</label>
+            <div class="col-9">
+              <textarea class="form-control" rows="3" placeholder="Describe Yourself"></textarea>
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label for="working" class="col-3 col-form-label">Working at</label>
+            <div class="col-9">
+              <input type="text" class="form-control" id="working" placeholder="Work Place">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-3">Topics Interested</div>
+            <div class="col-9">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="arts">
+                <label class="form-check-label" for="arts">
+                  Arts
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="arts">
+                <label class="form-check-label" for="arts">
+                  Arts
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="arts">
+                <label class="form-check-label" for="arts">
+                  Arts
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="arts">
+                <label class="form-check-label" for="arts">
+                  Arts
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <div class="col-3"></div>
+            <div class="col-9">
+              <button type="submit" class="btn btn-primary">Update Profile</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

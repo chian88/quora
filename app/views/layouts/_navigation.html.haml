@@ -1,0 +1,36 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container
+    %a.navbar-brand.mr-5{:href => "#"} Quora
+    .collapse.navbar-collapse
+      .navbar-nav.col-8
+        %a.nav-link.active{:href => "#"} Home
+        %a.nav-link{:href => "#"} Answer
+        %a.nav-link{:href => "#"} Notifications
+        %form.form-inline.col-8
+          %input.form-control.col-12{:placeholder => "Search", :type => "search"}/
+        .btn-group
+          %button.btn.btn-outline-primary{:type => "button"} Chian Yee
+          %button.btn.btn-outline-primary.mr-2.dropdown-toggle.dropdown-toggle-split{"data-toggle" => "dropdown", :type => "button"}
+          .dropdown-menu
+            %a.dropdown-item{:href => "#"} Profile
+            %a.dropdown-item{:href => "#"} Settings
+            .dropdown-divider
+            %a.dropdown-item{:href => "#"} Logout
+        %a.nav-link.btn-outline-danger.btn.btn-sm{"data-target" => "#questionModal", "data-toggle" => "modal", :href => "#"} Add Question
+        / Modal
+        #questionModal.modal.fade{:tabindex => "-1"}
+          .modal-dialog
+            .modal-content
+              .modal-header
+                %h5.modal-title Please Ask Your Question
+                %button.close{"data-dismiss" => "modal", :type => "button"}
+                  %span ×
+              .modal-body
+                %form
+                  .form-group
+                    %input#question.form-control.form-control-lg.no-border-text{:name => "question", :placeholder => "Type Question Here.", :type => "text"}/
+                  .form-group
+                    %input#category.form-control.form-control-sm{:name => "category", :placeholder => "AI, computer science, literature", :type => "text"}/
+              .modal-footer
+                %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+                %button.btn.btn-primary{:type => "button"} Add Question

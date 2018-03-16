@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quora - Q&A Site</title>
+  
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand mr-5" href="#">Quora</a>
+
+      <div class="collapse navbar-collapse">
+        <div class="navbar-nav col-8">
+          <a class="nav-link active" href="#">Home</a>
+          <a class="nav-link" href="#">Answer</a>
+          <a class="nav-link" href="#">Notifications</a>
+
+          <form class="form-inline col-8">
+            <input class="form-control col-12" type="search" placeholder="Search">
+          </form>
+
+          <div class="btn-group">
+            <button type="button" class="btn btn-outline-primary">Chian Yee</button>
+            <button type="button" class="btn btn-outline-primary mr-2 dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Profile</a>
+              <a class="dropdown-item" href="#">Settings</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Logout</a>
+            </div>
+          </div>
+
+
+          <a class="nav-link btn-outline-danger btn btn-sm" data-toggle="modal" data-target="#questionModal" href="#">Add Question</a>
+
+          <!-- Modal -->
+          <div class="modal fade" id="questionModal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Please Ask Your Question</h5>
+                  <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <input type="text" class="form-control form-control-lg no-border-text" name="question" id="question" placeholder="Type Question Here.">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control form-control-sm" name="category" id="category" placeholder="AI, computer science, literature">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Add Question</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="container p-3">
+    <div class="row">
+      <div class="col-8">
+        <div class="row"> <!-- details of the user -->
+          <div class="col-3">
+            <img src="http://via.placeholder.com/150x150" alt="..." class="rounded-circle">
+          </div>
+          <div class="col-9">
+            <h5>Chian Yee Lee</h5>
+            <p>I am just a regular person</p>
+          </div>
+        </div> <!-- END details of the user -->
+        <hr>
+        <div class="row">
+          <div class="col-3">
+
+            <ul>
+              <li><h6>Feeds</h6></li>
+              <hr>
+              <li>Answers <span class="badge badge-dark">5</span></li>
+              <li>Questions <span class="badge badge-dark">2</span></li>            
+
+            </ul>
+          </div>
+          <div class="col-9">
+            5 Answers
+            <span class="float-right">Most Recent / 30 Day View</span>
+            <hr>
+            <div class="card mb-2">
+              <div class="card-body">
+                <h5 class="card-title"><a href="">How does a beginner start to learn machine learning?</a></h5>
+                <p>
+                  <span class="badge badge-secondary">Technology</span>
+                  <span class="badge badge-secondary">AI</span>
+                </p>
+                <p class="card-text">I can only answer this question in a personal way. In 1981, I was studying in a graduate program in India (Indian Institute of Technology, Kanpur), training to be an electrical engineer. I loved EE.</p>
+              </div>
+            </div>
+
+            <div class="card mb-2">
+              <div class="card-body">
+                <h5 class="card-title"><a href="">How does a beginner start to learn machine learning?</a></h5>
+                <p>
+                  <span class="badge badge-secondary">Technology</span>
+                  <span class="badge badge-secondary">AI</span>
+                </p>
+                <p class="card-text">I can only answer this question in a personal way. In 1981, I was studying in a graduate program in India (Indian Institute of Technology, Kanpur), training to be an electrical engineer. I loved EE.</p>
+              </div>
+            </div>
+
+            <div class="card mb-2">
+              <div class="card-body">
+                <h5 class="card-title"><a href="">How does a beginner start to learn machine learning?</a></h5>
+                <p>
+                  <span class="badge badge-secondary">Technology</span>
+                  <span class="badge badge-secondary">AI</span>
+                </p>
+                <p class="card-text">I can only answer this question in a personal way. In 1981, I was studying in a graduate program in India (Indian Institute of Technology, Kanpur), training to be an electrical engineer. I loved EE.</p>
+              </div>
+            </div>
+
+            <div class="card mb-2">
+              <div class="card-body">
+                <h5 class="card-title"><a href="">How does a beginner start to learn machine learning?</a></h5>
+                <p>
+                  <span class="badge badge-secondary">Technology</span>
+                  <span class="badge badge-secondary">AI</span>
+                </p>
+                <p class="card-text">I can only answer this question in a personal way. In 1981, I was studying in a graduate program in India (Indian Institute of Technology, Kanpur), training to be an electrical engineer. I loved EE.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="row">
+          <div class="col-12">
+            <h5>Credentials & Highlights</h5>
+            <hr>
+            <ul>
+              <li>Works at Entrepreneurship</li>
+              <li>Lives in Kuala Lumpur, Malaysia</li>
+            </ul>
+          </div>
+        </div> <!-- end of row -->
+
+        <div class="row">
+          <div class="col-12">
+            <h5>Knows About</h5>
+            <hr>
+            <ul>
+              <li>Ruby Programming</li>
+              <li>Web Development</li>
+              <li>Accounting</li>
+            </ul>
+          </div>
+        </div> <!-- end of row -->
+      </div> 
+    </div>
+  </div>
+</main>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

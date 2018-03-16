@@ -14,3 +14,11 @@ a {
 textarea {
   resize: none;
 }
+
+.no-border-text {
+  border: none;
+}
+
+li {
+  font-size: 80%;
+}
