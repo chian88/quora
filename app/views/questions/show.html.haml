@@ -1,0 +1,42 @@
+.container.py-3
+  .row
+    .col-7
+      %p
+        = render @question.topics
+        %span.badge.badge-secondary edit
+      %h4= @question.body
+      .dropdown
+        %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"} Answer
+        .dropdown-menu.col-12.my-2
+          = form_tag("/questions/#{@question.id}/answers", method: :post, class: "px-2") do
+            .form-group
+              = label_tag 'answer[body]', 'Write your answer'
+              = text_area_tag 'answer[body]', nil, rows: 6, class: 'form-control'
+              .dropdown-divider
+              = submit_tag "Submit Answer", class: 'btn btn-success'
+      %hr/
+      %h5 #{@question.answers.size} Answers
+      %hr/
+      - @question.answers.each do |answer|
+        %div
+          %p
+            #{answer.user.name}, #{answer.user.work}
+            %br/
+            %span.text-muted.txt-sm Answered #{answer.created_at}
+          %p.text-justify= answer.body
+          %button.btn.btn-outline-primary.btn-sm{:type => "button"} Upvote | 12
+          %hr/
+    .col-3
+      %h5 Related Questions
+      %hr/
+      %ul
+        %li.mb-3
+          %a{:href => "#"} What are some of the best ways to learn programming?
+        %li.mb-3
+          %a{:href => "#"} What are some of the best ways to learn programming?
+        %li.mb-3
+          %a{:href => "#"} What are some of the best ways to learn programming?
+        %li.mb-3
+          %a{:href => "#"} What are some of the best ways to learn programming?
+        %li.mb-3
+          %a{:href => "#"} What are some of the best ways to learn programming?

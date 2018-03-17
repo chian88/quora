@@ -1,0 +1,11 @@
+.card.mb-2
+  .card-body
+    %h5.card-title
+      = link_to question.body, question_path(question)
+    %p
+      = render question.topics
+    %p.card-text.mb-2.txt-sm
+      #{question.user.name}, #{question.user.work}
+      %br/
+      %span.text-muted Answered #{question.answers.first.created_at}
+    %p.card-text= question.answers.first.body

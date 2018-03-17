@@ -1,0 +1,24 @@
+ul {
+  list-style-type: none;
+}
+
+
+.txt-sm {
+  font-size: 12px;
+}
+
+a {
+  color: #4a4949;
+}
+
+textarea {
+  resize: none;
+}
+
+.no-border-text {
+  border: none;
+}
+
+li {
+  font-size: 80%;
+}

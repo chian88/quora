@@ -3,7 +3,7 @@
     %a.navbar-brand.mr-5{:href => "#"} Quora
     .collapse.navbar-collapse
       .navbar-nav.col-8
-        %a.nav-link.active{:href => "#"} Home
+        = link_to 'Home', questions_path, class: 'nav-link'
         %a.nav-link{:href => "#"} Answer
         %a.nav-link{:href => "#"} Notifications
         %form.form-inline.col-8
