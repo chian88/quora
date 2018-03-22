@@ -1,11 +1,15 @@
-.card.mb-2
-  .card-body
-    %h5.card-title
-      = link_to question.body, question_path(question)
-    %p
-      = render question.topics
-    %p.card-text.mb-2.txt-sm
-      #{question.user.name}, #{question.user.work}
-      %br/
-      %span.text-muted Answered #{question.answers.first.created_at}
-    %p.card-text= question.answers.first.body
+= link_to question_path(question) do
+  .card.mb-2
+    .card-body
+      %h5.card-title.question_title
+        = question.body
+      %p
+        = render question.topics
+      %p.card-text.mb-2.txt-sm
+        Asked by #{question.user.name}, #{question.user.work} on #{format_date(question.created_at)}
+        %br/
+        - unless question.answers.blank?
+          %span.text-muted First answered on #{format_date(question.answers.first.created_at)}
+          %p.card-text= question.answers.first.body
+        - else
+          %p.card-text No answer for this question yet.

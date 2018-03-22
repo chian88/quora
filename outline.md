@@ -52,3 +52,59 @@ Answer
 Vote
   - belongs to a user and a answer
   - has a boolean value, true
+
+
+
+
+Features to implement
+
+login features
+- if user already logged in , then redirect to question index page when go to pages#front page
+- implement a profile page. which is to edit user info.
+
+
+- Home tab is where your question are
+- Answer tab is where question that you are interested will be , but your question will be ommited
+- Notification is a list of message that someone else has answered your question, or you have posted a question, or someone else has posted a question with a topick that u are interested in.
+
+
+missing features
+- search features - 
+- notifications
+- answer page 
+- upvote function
+- related question function in show question page.
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

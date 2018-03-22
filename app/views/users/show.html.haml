@@ -1,0 +1,62 @@
+.container.p-3
+  .row
+    .col-8
+      .row
+        / details of the user
+        .col-3
+          %img.rounded-circle{:alt => "Your Photo", :src => "http://via.placeholder.com/150x150"}
+        .col-9
+          %h5= @user.name
+          %p= @user.description
+      %hr
+      .row
+        .col-3
+          %ul
+            %li
+              %h6 Feeds
+            %hr
+              %li
+                = link_to user_path(@user) do
+                  Answers
+                  %span.badge.badge-dark= @user.answers.size
+              %li
+                = link_to user_path(@user, tab: 'question') do
+                  Questions
+                  %span.badge.badge-dark= @user.questions.size
+        .col-9
+          - if params[:tab].nil?
+            #{@user.answers.size} Answers
+            %hr
+              - @user.answers.each do |answer|
+                .card.mb-2
+                  .card-body
+                    %p.card-text= answer.body
+                    %p.card-text answered for the question #{link_to answer.question.body, question_path(answer.question), class: 'clickable'}
+          - elsif params[:tab] == 'question'
+            #{@user.questions.size} Questions
+            %hr
+              - @user.questions.each do |question|
+                = render 'questions/question', question: question
+
+    .col-4
+      .row
+        .col-12
+          %h5 Credentials & Highlights
+          %hr
+            %ul
+              - unless @user.work.blank?
+                %li Works as #{@user.work}
+              - else
+                %li= link_to 'Add work details', edit_user_path
+              - unless @user.location.blank?
+                %li Lives in #{@user.location}
+              - else
+                %li= link_to 'Add location details', edit_user_path
+        / end of row
+      .row
+        .col-12
+          %h5 Knows About
+          %hr
+            %ul
+              - @user.topics.each do |topic|
+                %li= topic.name

@@ -1,0 +1,43 @@
+.container.p-3
+  .row
+    .col-3
+
+    .col-6
+      %h5 Register Account
+      %hr/
+      = form_for @user do |f|
+        .form-group.row
+          = f.label :name, 'Your Name', class: 'col-3 col-form-label'
+          .col-9
+            = f.text_field :name, class: 'form-control'
+        .form-group.row
+          = f.label :email, 'Email Address', class: 'col-3 col-form-label'
+          .col-9
+            = f.email_field :email, class: 'form-control', placeholder: 'email@example.com'
+        .form-group.row
+          = f.label :password, 'Password', class: 'col-3 col-form-label'
+          .col-9
+            = f.password_field :password, class: 'form-control', placeholder: 'enter password'
+        .form-group.row
+          = f.label :location, 'Location (optional)', class: 'col-3 col-form-label'
+          .col-9
+            = f.text_field :location, class: 'form-control'
+        .form-group.row
+          = f.label :description, 'Description (optional)', class: 'col-3 col-form-label'
+          .col-9
+            = f.text_area :description, class: 'form-control', placeholder: 'Describe Yourself', rows: '3'
+        .form-group.row
+          = f.label :work, "Occupation (optional)", class: 'col-3 col-form-label'
+          .col-9
+            = f.text_field :work, class: 'form-control', placeholder: 'Your job'
+        .form-group.row
+          .col-3 Topics Interested (optional)
+          .col-9
+            = f.collection_check_boxes(:topic_ids, Topic.all, :id, :name) do |cb|
+              .form-check
+                = cb.label(class: 'form-check-label') { cb.check_box(class: 'form-check-input') + cb.text}
+        .form-group.row
+          .col-3
+          .col-9
+            = f.submit "Submit", class: 'btn btn-primary'
+            

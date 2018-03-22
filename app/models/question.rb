@@ -3,4 +3,6 @@ class Question < ApplicationRecord
   has_many :answers
   has_many :question_topics
   has_many :topics, through: :question_topics
+
+  validates :body, presence: true
 end

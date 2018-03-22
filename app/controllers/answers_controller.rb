@@ -1,12 +1,15 @@
 class AnswersController < ApplicationController
+  before_action :requires_sign_in
+  
   def create
     additional_params = { 
       question_id: params[:question_id],
-      user_id: 1
+      user: current_user
     }
 
     @answer = Answer.new(answer_params.merge additional_params)
     if @answer.save
+      flash[:success] = "Your answer successfully posted."
       redirect_to question_path(params[:question_id])
     else
 

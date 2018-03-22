@@ -9,28 +9,45 @@
         %form.form-inline.col-8
           %input.form-control.col-12{:placeholder => "Search", :type => "search"}/
         .btn-group
-          %button.btn.btn-outline-primary{:type => "button"} Chian Yee
-          %button.btn.btn-outline-primary.mr-2.dropdown-toggle.dropdown-toggle-split{"data-toggle" => "dropdown", :type => "button"}
-          .dropdown-menu
-            %a.dropdown-item{:href => "#"} Profile
-            %a.dropdown-item{:href => "#"} Settings
-            .dropdown-divider
-            %a.dropdown-item{:href => "#"} Logout
-        %a.nav-link.btn-outline-danger.btn.btn-sm{"data-target" => "#questionModal", "data-toggle" => "modal", :href => "#"} Add Question
-        / Modal
-        #questionModal.modal.fade{:tabindex => "-1"}
-          .modal-dialog
-            .modal-content
-              .modal-header
-                %h5.modal-title Please Ask Your Question
-                %button.close{"data-dismiss" => "modal", :type => "button"}
-                  %span ×
-              .modal-body
-                %form
-                  .form-group
-                    %input#question.form-control.form-control-lg.no-border-text{:name => "question", :placeholder => "Type Question Here.", :type => "text"}/
-                  .form-group
-                    %input#category.form-control.form-control-sm{:name => "category", :placeholder => "AI, computer science, literature", :type => "text"}/
-              .modal-footer
-                %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
-                %button.btn.btn-primary{:type => "button"} Add Question
+          - if logged_in?
+            %button.btn.btn-outline-primary{:type => "button"}= current_user.name
+            %button.btn.btn-outline-primary.mr-2.dropdown-toggle.dropdown-toggle-split{"data-toggle" => "dropdown", :type => "button"}
+            .dropdown-menu
+              = link_to 'Profile', user_path(current_user), class: 'dropdown-item'
+              = link_to 'Settings', edit_user_path(current_user), class: 'dropdown-item'
+              .dropdown-divider
+              = link_to 'Logout', logout_path, class: 'dropdown-item'
+          - else
+            %button.btn.btn-outline-primary{:type => "button"} Log In
+            %button.btn.btn-outline-primary.mr-2.dropdown-toggle.dropdown-toggle-split{"data-toggle" => "dropdown", :type => "button"}
+            .dropdown-menu.login-menu
+              = form_tag '/login', method: 'post', class: 'px-4 py-3' do
+                .form-group
+                  = label_tag 'email', 'Email address'
+                  = email_field_tag 'email', nil, class: 'form-control', placeholder: 'email@example.com'
+                .form-group
+                  = label_tag 'password', 'Password'
+                  = password_field_tag 'password', nil, class: 'form-control', placeholder: 'enter password'
+                = submit_tag "Sign in", class: 'btn btn-primary'
+              .dropdown-divider
+              = link_to 'New around here? Sign up', '/register', class: 'dropdown-item'
+
+        - if logged_in?
+          %a.nav-link.btn-outline-danger.btn.btn-sm{"data-target" => "#questionModal", "data-toggle" => "modal", :href => "#"} Add Question
+          / Modal
+          #questionModal.modal.fade{:tabindex => "-1"}
+            .modal-dialog
+              .modal-content
+                .modal-header
+                  %h5.modal-title Please Ask Your Question
+                  %button.close{"data-dismiss" => "modal", :type => "button"}
+                    %span ×
+                .modal-body
+                  = form_for @new_question do |f|
+                    .form-group
+                      = f.text_field :body, class: 'form-control form-control-lg no-border-text', placeholder: "Type question here."
+                    .form-group
+                      = f.text_field :topics, class: 'form-control form-control-sm', placeholder: 'AI, computer science, literature', value: ''
+                    .modal-footer
+                      %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+                      = f.submit 'Add Question', class: 'btn btn-primary'

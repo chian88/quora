@@ -1,0 +1,5 @@
+- flash.each do |name, msg| 
+  %div(class="alert alert-#{name} alert-dismissible fade show")
+    = msg
+    %button.close(type="button" data-dismiss="alert")
+      %span &times;

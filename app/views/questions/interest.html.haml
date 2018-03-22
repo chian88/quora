@@ -12,5 +12,6 @@
     .col-7
       %h5 Question you asked
       %hr
-      - @questions.each do |question|
-        = render 'question', question: question
+      - @topics.each do |topic|
+        - topic.questions.each do |question|
+          = render 'question', question: question, topic: topic

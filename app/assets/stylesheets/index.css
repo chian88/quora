@@ -7,8 +7,17 @@ ul {
   font-size: 12px;
 }
 
+.clickable {
+  color: #0645AD;
+}
+
 a {
   color: #4a4949;
+}
+
+a:hover {
+  color: #000;
+  text-decoration: none;
 }
 
 textarea {
@@ -21,4 +30,13 @@ textarea {
 
 li {
   font-size: 80%;
+}
+
+.login-menu {
+    width: 400px !important;
+}
+
+.question_title {
+  font-style: italic;
+  color: #0B0080;
 }
