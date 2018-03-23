@@ -72,13 +72,19 @@ missing features
 - search features - 
 - notifications
 - answer page 
-- upvote function
 - related question function in show question page.
-- 
+- all validation features.
 
 
 
+- task today
+ + implement the voting function +
 
+
+ + search function (a bit simple). +
+ + implement a feature where top voted answers will be at the top. +
+
+ + implement a feature where, the answer will be limited to a few characters
 
 
 

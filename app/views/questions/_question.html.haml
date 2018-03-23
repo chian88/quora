@@ -10,6 +10,6 @@
         %br/
         - unless question.answers.blank?
           %span.text-muted First answered on #{format_date(question.answers.first.created_at)}
-          %p.card-text= question.answers.first.body
+          %p.card-text= question.answers.first.short_version
         - else
           %p.card-text No answer for this question yet.

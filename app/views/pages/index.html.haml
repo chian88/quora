@@ -1,0 +1,16 @@
+.container.py-3
+  .row
+    .col-3
+      %ul
+        %li
+          %h6 Feeds
+        %hr/
+        %li
+          %a{:href => "#"} Top Stories
+        %li
+          %a{:href => "#"} New Stories
+    .col-7
+      %h5 All Questions from Quora
+      %hr
+      - @questions.each do |question|
+        = render 'questions/question', question: question

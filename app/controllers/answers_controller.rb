@@ -14,8 +14,14 @@ class AnswersController < ApplicationController
     else
 
     end
+  end
 
-
+  def vote
+    @answer = Answer.find(params[:id])
+    @vote = Vote.create(user: current_user, answer: @answer, value: true)
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

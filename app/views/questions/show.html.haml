@@ -19,11 +19,12 @@
       - @question.answers.each do |answer|
         %div
           %p
-            #{answer.user.name}, #{answer.user.work}
+            #{answer.user.name}, #{answer.user.work} 
             %br/
-            %span.text-muted.txt-sm Answered #{answer.created_at}
+            %span.text-muted.txt-sm Answered on #{format_date(answer.created_at)}
           %p.text-justify= answer.body
-          %button.btn.btn-outline-primary.btn-sm{:type => "button"} Upvote | 12
+          = link_to vote_question_answer_path(@question, answer), method: 'post', remote: true, class: 'btn btn-outline-primary btn-sm' do
+            Upvote | <span id="answers_#{answer.id}_vote">#{answer.votes_count}</span>
           %hr/
     .col-3
       %h5 Related Questions
