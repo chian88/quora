@@ -16,6 +16,7 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rails-simple-search'
+gem 'open-iconic-rails'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'

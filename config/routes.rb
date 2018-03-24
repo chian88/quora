@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :pages, only: [:index]
 
   resources :questions, only: [:index, :show, :create] do
-    resources :answers, only: [:create] do
+    resources :answers, only: [:create, :destroy] do
       member do
         post 'vote'
       end

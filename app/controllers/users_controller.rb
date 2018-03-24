@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = "User successfully registered."
-      redirect_to questions_path
+      redirect_to root_path
     else
       flash[:warning] = "Something wrong with your registration process"
       render :new

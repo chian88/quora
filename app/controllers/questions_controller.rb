@@ -7,6 +7,8 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+
+    @related_questions = @question.related_questions.reject { |q| q == @question }
   end
 
   def create
@@ -25,7 +27,8 @@ class QuestionsController < ApplicationController
   end
 
   def interest
-    binding.pry
+    @topics = current_user.topics
+
   end
 
   private

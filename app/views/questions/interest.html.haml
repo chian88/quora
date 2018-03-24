@@ -10,8 +10,11 @@
         %li
           %a{:href => "#"} New Stories
     .col-7
-      %h5 Question you asked
+      %h5 Topics you are interested asked by others.
       %hr
       - @topics.each do |topic|
-        - topic.questions.each do |question|
-          = render 'question', question: question, topic: topic
+        - if topic.questions.any?{ |q| q.user != current_user }
+          %hr
+          - topic.questions.each do |question|
+            - next if question.user == current_user
+            = render 'question', question: question, topic: topic

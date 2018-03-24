@@ -10,7 +10,7 @@
         %li
           %a{:href => "#"} New Stories
     .col-7
-      %h5 Question you asked
+      %h5 You have asked these questions.
       %hr
       - @questions.each do |question|
         = render 'question', question: question

@@ -84,10 +84,24 @@ missing features
  + search function (a bit simple). +
  + implement a feature where top voted answers will be at the top. +
 
- + implement a feature where, the answer will be limited to a few characters
+ + implement a feature where, the answer will be limited to a few characters +
+ 
+
+ + implement notifications +
+ + implement the answer page +
 
 
+ requirement 
 
+ - user has a list of topics 
+ - i want to show the list of question related to that topic. , but no duplicate.
+
+
+ algo
+ 1. user.topics.each do topic
+ 2. for each topic. find out the question. at the top of the topic loop, say "Because you are interested in this topic"
+ 3. place the question into an array
+ 4. 
 
 
 

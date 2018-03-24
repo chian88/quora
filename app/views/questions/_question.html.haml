@@ -1,5 +1,8 @@
+- topic ||= nil
+
 = link_to question_path(question) do
   .card.mb-2
+
     .card-body
       %h5.card-title.question_title
         = question.body
@@ -13,3 +16,6 @@
           %p.card-text= question.answers.first.short_version
         - else
           %p.card-text No answer for this question yet.
+
+      - if topic
+        %span.badge.badge-primary.badge-pill Because you are interested in #{topic.name} <br>

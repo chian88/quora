@@ -31,7 +31,7 @@
                 .card.mb-2
                   .card-body
                     %p.card-text= answer.body
-                    %p.card-text answered for the question #{link_to answer.question.body, question_path(answer.question), class: 'clickable'}
+                    %p.card-text.txt-sm answered for the question #{link_to answer.question.body, question_path(answer.question), class: 'clickable'}
           - elsif params[:tab] == 'question'
             #{@user.questions.size} Questions
             %hr

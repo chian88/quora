@@ -3,9 +3,9 @@
     .col-7
       %p
         = render @question.topics
-      %h4= @question.body
+      %h4.mb-3= @question.body
       .dropdown
-        %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"} Answer
+        %button.btn.btn-secondary.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"} Answer
         .dropdown-menu.col-12.my-2
           = form_tag("/questions/#{@question.id}/answers", method: :post, class: "px-2") do
             .form-group
@@ -14,29 +14,17 @@
               .dropdown-divider
               = submit_tag "Submit Answer", class: 'btn btn-success'
       %hr/
-      %h5 #{@question.answers.size} Answers
+      %h5= pluralize(@question.answers.size, "Answer")
       %hr/
-      - @question.answers.each do |answer|
+      - if @question.answers.blank?
         %div
-          %p
-            #{answer.user.name}, #{answer.user.work} 
-            %br/
-            %span.text-muted.txt-sm Answered on #{format_date(answer.created_at)}
-          %p.text-justify= answer.body
-          = link_to vote_question_answer_path(@question, answer), method: 'post', remote: true, class: 'btn btn-outline-primary btn-sm' do
-            Upvote | <span id="answers_#{answer.id}_vote">#{answer.votes_count}</span>
-          %hr/
+          %p Be the first to answer this question.
+      - else
+        = render @question.answers
     .col-3
       %h5 Related Questions
       %hr/
       %ul
-        %li.mb-3
-          %a{:href => "#"} What are some of the best ways to learn programming?
-        %li.mb-3
-          %a{:href => "#"} What are some of the best ways to learn programming?
-        %li.mb-3
-          %a{:href => "#"} What are some of the best ways to learn programming?
-        %li.mb-3
-          %a{:href => "#"} What are some of the best ways to learn programming?
-        %li.mb-3
-          %a{:href => "#"} What are some of the best ways to learn programming?
+        - @related_questions.each do |question|
+          %li.mb-3
+            = link_to question.body, question_path(question)

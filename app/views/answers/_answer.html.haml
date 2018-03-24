@@ -1,0 +1,11 @@
+%div
+  %p
+    #{answer.user.name}, #{answer.user.work} 
+    %br/
+    %span.text-muted.txt-sm Answered on #{format_date(answer.created_at)}
+  %p.text-justify= answer.body
+  = link_to vote_question_answer_path(@question, answer), method: 'post', remote: true, class: 'btn btn-outline-primary btn-sm mr-2' do
+    Upvote | <span id="answers_#{answer.id}_vote">#{answer.votes_count}</span>
+  = link_to question_answer_path(@question, answer), method: 'delete', class: 'btn btn-outline-primary btn-sm' do 
+    Delete
+  %hr/
