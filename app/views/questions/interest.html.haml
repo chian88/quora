@@ -1,16 +1,9 @@
 .container.py-3
   .row
     .col-3
-      %ul
-        %li
-          %h6 Feeds
-        %hr/
-        %li
-          %a{:href => "#"} Top Stories
-        %li
-          %a{:href => "#"} New Stories
+
     .col-7
-      %h5 Topics you are interested asked by others.
+      %h5 Questions you can help answer !
       %hr
       - @topics.each do |topic|
         - if topic.questions.any?{ |q| q.user != current_user }

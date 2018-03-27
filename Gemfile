@@ -17,6 +17,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rails-simple-search'
 gem 'open-iconic-rails'
+gem 'will_paginate', '~> 3.1.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'

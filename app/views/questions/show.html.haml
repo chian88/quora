@@ -25,6 +25,9 @@
       %h5 Related Questions
       %hr/
       %ul
-        - @related_questions.each do |question|
-          %li.mb-3
-            = link_to question.body, question_path(question)
+        - if @related_questions.blank?
+          No questions related to this topic currently.
+        - else
+          - @related_questions.each do |question|
+            %li.mb-3
+              = link_to question.body, question_path(question)

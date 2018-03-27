@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :set_question_model
+  before_action :set_new_question
 
   helper_method :current_user, :logged_in?
 
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def set_question_model
+  def set_new_question
     @new_question = Question.new
   end
 end

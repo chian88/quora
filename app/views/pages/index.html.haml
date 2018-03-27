@@ -6,11 +6,13 @@
           %h6 Feeds
         %hr/
         %li
-          %a{:href => "#"} Top Stories
+          = link_to 'Most Popular Questions', pages_path(sort: 'top_views')
         %li
-          %a{:href => "#"} New Stories
+          = link_to 'Newest Questions', pages_path
     .col-7
       %h5 All Questions from Quora
       %hr
       - @questions.each do |question|
         = render 'questions/question', question: question
+      .digg_pagination
+        = will_paginate @questions, :page_links => true

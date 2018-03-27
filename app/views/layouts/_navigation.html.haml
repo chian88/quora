@@ -5,9 +5,26 @@
       .navbar-nav.col-8
         = link_to 'Home', questions_path, class: 'nav-link'
         = link_to 'Answer', interest_questions_path, class: 'nav-link'
-        %a.nav-link{:href => "#"} Notifications
+        - if logged_in?
+          .dropdown
+            %a#dropdownMenuButton.nav-link.notification.dropdown-toggle{"data-toggle" => "dropdown"}
+              Notification
+            .dropdown-menu.notify-box
+              - if current_user.notifications.blank?
+                %a.dropdown-item You have no new notification.
+              - else
+                - current_user.notifications.each do |notification|
+                  = link_to notification.question, class: 'dropdown-item' do 
+                    = notification.message
+                  %div.dropdown-divider
+        - else
+          .dropdown
+            %a#dropdownMenuButton.nav-link.notification.dropdown-toggle.disabled{"data-toggle" => "dropdown"}
+              Notification
+            
+
         = form_tag searches_path, method: 'get', class: 'form-inline col-8' do
-          = search_field :question, :body, {class: 'form-control col-12', placeholder: 'Search'}
+          = search_field :search_question, :body, {class: 'form-control col-12', placeholder: 'Search'}
 
         .btn-group
           - if logged_in?
@@ -46,7 +63,7 @@
                 .modal-body
                   = form_for @new_question do |f|
                     .form-group
-                      = f.text_field :body, class: 'form-control form-control-lg no-border-text', placeholder: "Type question here."
+                      = f.text_field :body, class: 'form-control no-border-text', placeholder: "Type question here."
                     .form-group
                       = f.text_field :topics, class: 'form-control form-control-sm', placeholder: 'AI, computer science, literature', value: ''
                     .modal-footer

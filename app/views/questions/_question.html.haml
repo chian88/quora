@@ -6,6 +6,7 @@
     .card-body
       %h5.card-title.question_title
         = question.body
+      %span.txt-sm #{question.views} views
       %p
         = render question.topics
       %p.card-text.mb-2.txt-sm

@@ -91,21 +91,16 @@ missing features
  + implement the answer page +
 
 
- requirement 
-
- - user has a list of topics 
- - i want to show the list of question related to that topic. , but no duplicate.
+ + implement a views system for each question. +
 
 
- algo
- 1. user.topics.each do topic
- 2. for each topic. find out the question. at the top of the topic loop, say "Because you are interested in this topic"
- 3. place the question into an array
- 4. 
++ implement pagination for quora first page
 
++ validation
++ refactor a lot of code.
+  - go by controller one by one
 
-
-
+  - then go by model one by one.
 
 
 

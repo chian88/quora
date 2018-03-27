@@ -1,12 +1,14 @@
 class PagesController < ApplicationController 
 
   def front
-    if logged_in?
-      redirect_to pages_path
-    end
+    redirect_to pages_path if logged_in?
   end
 
   def index
-    @questions = Question.all
+    if params[:sort] == 'top_views'
+      @questions = Question.all.order(views: :desc).paginate(:page => params[:page])
+    else
+      @questions = Question.all.order(created_at: :desc).paginate(:page => params[:page])
+    end
   end
 end

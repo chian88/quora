@@ -2,7 +2,9 @@ class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :question
 
-  has_many :votes
+  has_many :votes, dependent: :destroy
+
+  validates :body, presence: { message: 'Answer cannot be blank' }
 
   default_scope { order('votes_count DESC') }
 
@@ -13,5 +15,5 @@ class Answer < ApplicationRecord
       return words.join(' ') 
     end
     body
-  end 
+  end
 end

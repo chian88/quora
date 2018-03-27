@@ -43,3 +43,14 @@ li {
   font-style: italic;
   color: #0B0080;
 }
+
+.notification::after {
+    display: none;
+}
+
+.notify-box {
+  width: 500px !important;
+} 
+.dropdown-item {
+  white-space: normal; 
+}
