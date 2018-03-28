@@ -10,4 +10,6 @@ class User < ApplicationRecord
   has_many :topics, through: :user_topics
 
   validates :email, presence: true
+  validates :email, uniqueness: true
+  validates :name, presence: true
 end

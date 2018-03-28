@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit]
+  before_action :find_user, only: [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -17,18 +17,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-  end
-
-  def edit
-  end
-
   def update
-    @user = User.find(params[:id])
-
     if @user.update(user_params)
       flash[:success] = "User profile successfully updated"
-      binding.pry
       redirect_to user_path(@user)
     else
       flash[:warning] = "Something went wrong with updating your profile"

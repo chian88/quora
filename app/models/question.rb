@@ -8,6 +8,7 @@ class Question < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   validates :body, presence: { message: 'Question must not be blank.' }
+  validates :body, uniqueness: { message: 'This question has been asked before.' }
 
   before_validation :set_topics, on: [:create]
   before_validation :capitalize_body, on: [:create]
@@ -24,12 +25,7 @@ class Question < ApplicationRecord
   def populate_topics!(topics)
     topics = parse_topics(topics)
     topics.each do |topic|
-      new_topic = Topic.find_by name: topic
-      if new_topic
-        self.topics << new_topic
-      else
-        self.topics << Topic.create(name: topic)
-      end
+      self.topics << ((Topic.find_by name: topic) || (Topic.create name: topic))
     end
   end
 
@@ -45,10 +41,9 @@ class Question < ApplicationRecord
   end
 
   def set_topics
-    general = Topic.find_by name: 'General'
-    general = Topic.create(name: 'General') unless general
+    Topic.create(name: 'General') unless (Topic.find_by name: 'General')
     if self.topics.blank?
-      self.topics << general
+      self.topics << (Topic.find_by name: 'General')
     end
   end
 end

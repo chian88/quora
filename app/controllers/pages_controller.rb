@@ -1,5 +1,4 @@
 class PagesController < ApplicationController 
-
   def front
     redirect_to pages_path if logged_in?
   end

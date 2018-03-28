@@ -12,7 +12,7 @@ class AnswersController < ApplicationController
 
     if @answer.save
       flash[:success] = "Your answer successfully posted."
-      generate_notification(@answer.question)
+      @answer.generate_answer_notification(current_user)
       redirect_to question_path(params[:question_id])
     else
       flash[:warning] = @answer.errors.messages[:body].first
@@ -22,9 +22,8 @@ class AnswersController < ApplicationController
 
   def vote
     @answer = Answer.find(params[:id])
-    @vote = Vote.create(user: current_user, answer: @answer, value: true)
-
-    generate_notification(@answer.question, @answer) if @vote.valid?
+    @vote = @answer.votes.create(user: current_user, value: true)
+    @answer.generate_vote_notification(current_user) if @vote.valid?
 
     respond_to do |format|
       format.js
@@ -44,18 +43,6 @@ class AnswersController < ApplicationController
       flash[:warning] = "Only can be deleted by answer owner."
       redirect_to question_path(params[:question_id])
     end
-  end
-
-  def generate_notification(question, answer=false)
-    case answer
-    when false
-      message = "#{current_user.name} has answered your question. (#{question.body})"
-      question.user.notifications.create(message: message, question: question) unless question.user == current_user
-    else
-      message = "#{current_user.name} has upvoted your answer. (#{question.body})"
-      answer.user.notifications.create(message: message, question: question) unless answer.user == current_user
-    end
-    
   end
 
   def answer_params

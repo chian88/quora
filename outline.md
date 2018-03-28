@@ -104,6 +104,15 @@ missing features
 
 
 
+Features.
++ has a User that is an Admin.
+- This admin can delete question. (all)
+- Delete answer (all)
+- Delete User.
+
++ build a slug url.
+
+
 
 
 

@@ -16,4 +16,14 @@ class Answer < ApplicationRecord
     end
     body
   end
+
+  def generate_vote_notification(current_user)
+    message = "#{current_user.name} has upvoted your answer. (#{question.body})"
+    self.user.notifications.create(message: message, question: question) unless self.user == current_user
+  end
+
+  def generate_answer_notification(current_user)
+    message = "#{current_user.name} has answered your question. (#{question.body})"
+    question.user.notifications.create(message: message, question: question) unless question.user == current_user
+  end
 end
