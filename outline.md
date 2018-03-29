@@ -110,7 +110,8 @@ Features.
 - Delete answer (all)
 - Delete User.
 
-+ build a slug url.
++ build a slug url
+- only user and question has slug.
 
 
 

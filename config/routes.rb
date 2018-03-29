@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#front'
   resources :pages, only: [:index]
 
-  resources :questions, only: [:index, :show, :create] do
+  resources :questions, only: [:index, :show, :create, :destroy], param: :slug do
     resources :answers, only: [:create, :destroy] do
       member do
         post 'vote'

@@ -1,6 +1,8 @@
 class Question < ApplicationRecord
   self.per_page = 5
 
+  before_create :set_slug
+
   belongs_to :user
   has_many :answers, dependent: :destroy
   has_many :question_topics
@@ -10,7 +12,7 @@ class Question < ApplicationRecord
   validates :body, presence: { message: 'Question must not be blank.' }
   validates :body, uniqueness: { message: 'This question has been asked before.' }
 
-  before_validation :set_topics, on: [:create]
+  before_validation :set_default_topics, on: [:create]
   before_validation :capitalize_body, on: [:create]
 
   def related_questions
@@ -29,7 +31,18 @@ class Question < ApplicationRecord
     end
   end
 
+  def to_param
+    self.slug
+  end
+
   private
+
+  def set_slug
+    loop do
+      self.slug = SecureRandom.uuid
+      break unless Question.where(slug: slug).exists?
+    end
+  end
 
   def parse_topics(topics)
     topics = topics.split(",").map(&:strip)
@@ -40,10 +53,9 @@ class Question < ApplicationRecord
     self.body = self.body.capitalize
   end
 
-  def set_topics
-    Topic.create(name: 'General') unless (Topic.find_by name: 'General')
+  def set_default_topics
     if self.topics.blank?
-      self.topics << (Topic.find_by name: 'General')
+      self.topics << (Topic.find_or_create_by name: 'General')
     end
   end
 end

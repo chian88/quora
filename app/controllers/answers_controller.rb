@@ -3,8 +3,9 @@ class AnswersController < ApplicationController
   before_action :requires_answer_owner, only: [:destroy]
   
   def create
+    question = Question.find_by slug: params[:question_slug]
     additional_params = { 
-      question_id: params[:question_id],
+      question_id: question.id,
       user: current_user
     }
     
@@ -13,10 +14,10 @@ class AnswersController < ApplicationController
     if @answer.save
       flash[:success] = "Your answer successfully posted."
       @answer.generate_answer_notification(current_user)
-      redirect_to question_path(params[:question_id])
+      redirect_to question_path(params[:question_slug])
     else
       flash[:warning] = @answer.errors.messages[:body].first
-      redirect_to question_path(params[:question_id])
+      redirect_to question_path(params[:question_slug])
     end
   end
 
@@ -32,7 +33,7 @@ class AnswersController < ApplicationController
 
   def destroy
     @answer.destroy
-    redirect_to question_path(params[:question_id])
+    redirect_to question_path(params[:question_slug])
   end
 
   private
@@ -41,7 +42,7 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     unless current_user == @answer.user
       flash[:warning] = "Only can be deleted by answer owner."
-      redirect_to question_path(params[:question_id])
+      redirect_to question_path(params[:question_slug])
     end
   end
 

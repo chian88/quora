@@ -4,12 +4,12 @@
     %br/
     %span.text-muted.txt-sm Answered on #{format_date(answer.created_at)}
   %p.text-justify= answer.body
-  = link_to vote_question_answer_path(@question, answer), method: 'post', remote: true, class: 'btn btn-outline-primary btn-sm mr-2' do
+  = link_to vote_question_answer_path(@question, answer), method: 'post', remote: true, class: 'btn btn-outline-success btn-sm mr-2' do
     Upvote | <span id="answers_#{answer.id}_vote">#{answer.votes_count}</span>
-  - if current_user == answer.user
-    = link_to question_answer_path(@question, answer), method: 'delete', class: 'btn btn-outline-primary btn-sm' do 
+  - if current_user == answer.user || current_user.admin?
+    = link_to question_answer_path(@question, answer), method: 'delete', class: 'btn btn-outline-danger btn-sm' do 
       Delete
   - else
-    = link_to question_answer_path(@question, answer), method: 'delete', class: 'btn btn-outline-primary btn-sm disabled' do 
+    = link_to question_answer_path(@question, answer), method: 'delete', class: 'btn btn-outline-danger btn-sm disabled' do 
       Delete    
   %hr/

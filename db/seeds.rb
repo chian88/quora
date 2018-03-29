@@ -21,7 +21,8 @@ user2 = User.create(
   description: "I am just a regular person", 
   location: "Kuala Lumpur, Malaysia", 
   work: "Financial Accountant", 
-  password: '123', 
+  password: '123',
+  position: 'admin',
   email: 'lee@example.com')
 topic1 = Topic.create(name: "Computer Science", users: [user1, user2])
 topic2 = Topic.create(name: "AI", users: [user1])
@@ -32,14 +33,15 @@ question2 = Question.create(body: "Can human level AI be reached?",
                             user: user1, 
                             topics: [topic1, topic2])
 
-answer1= Answer.create(body: "Answer1 Ah yes, this is so actual. People are getting more and more advanced in their skillset, solving complicated problems and growing professionally but the learning material is just not there yet. Honestly, I don't think this problem will ever be completely solved, because the amounts of different tech stacks and their combinations is unthinkable. It would take ages and ages to record or write down so many tutorials or books for every single problem one might face. As always,The two best techniques to learn advanced things in the programming field and get better stay the same: Read a lot of code Write a lot of code",
+answer1= Answer.create(body: "Answer1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra sapien vitae tempus consectetur. Morbi et maximus ipsum. Phasellus commodo viverra quam, rhoncus rutrum nisl congue ut. Praesent cursus euismod tempus. Aenean non orci in lorem sollicitudin laoreet nec sed dui. Donec in arcu nisi. Donec dapibus sem justo, at semper nisi condimentum at.",
                        user: user1, 
                        question: question1)
 
-answer2= Answer.create(body: "Answer2 Ah yes, this is so actual. People are getting more and more advanced in their skillset, solving complicated problems and growing professionally but the learning material is just not there yet. Honestly, I don't think this problem will ever be completely solved, because the amounts of different tech stacks and their combinations is unthinkable. It would take ages and ages to record or write down so many tutorials or books for every single problem one might face. As always,The two best techniques to learn advanced things in the programming field and get better stay the same: \nRead a lot of code \nWrite a lot of code",
+answer2= Answer.create(body: "Answer2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra sapien vitae tempus consectetur. Morbi et maximus ipsum. Phasellus commodo viverra quam, rhoncus rutrum nisl congue ut. Praesent cursus euismod tempus. Aenean non orci in lorem sollicitudin laoreet nec sed dui. Donec in arcu nisi. Donec dapibus sem justo, at semper nisi condimentum at.",
                        user: user1, 
                        question: question2)
 
-answer3= Answer.create(body: "Answer3 Ah yes, this is so actual. People are getting more and more advanced in their skillset, solving complicated problems and growing professionally but the learning material is just not there yet. Honestly, I don't think this problem will ever be completely solved, because the amounts of different tech stacks and their combinations is unthinkable. It would take ages and ages to record or write down so many tutorials or books for every single problem one might face. As always,The two best techniques to learn advanced things in the programming field and get better stay the same: \nRead a lot of code \nWrite a lot of code",
+answer3= Answer.create(body: "Answer3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra sapien vitae tempus consectetur. Morbi et maximus ipsum. Phasellus commodo viverra quam, rhoncus rutrum nisl congue ut. Praesent cursus euismod tempus. Aenean non orci in lorem sollicitudin laoreet nec sed dui. Donec in arcu nisi. Donec dapibus sem justo, at semper nisi condimentum at.",
                        user: user2, 
                        question: question1)
+

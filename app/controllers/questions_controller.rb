@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :requires_sign_in
+  before_action :set_question, only: [:destroy, :show]
 
   def index
     if params[:sort] == 'top_views'
@@ -10,7 +11,6 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
     @question.update_views
     @related_questions = @question.related_questions.reject { |q| q == @question }
   end
@@ -29,11 +29,21 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def destroy 
+    @question.destroy
+    flash[:success] = "Question deleted."
+    redirect_to questions_path
+  end
+
   def interest
     @topics = current_user.topics
   end
 
   private
+
+  def set_question
+    @question = Question.find_by(slug: params[:slug])
+  end
 
   def question_params
     params.require(:question).permit(:body)

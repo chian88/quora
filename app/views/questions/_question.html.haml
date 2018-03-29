@@ -12,11 +12,16 @@
       %p.card-text.mb-2.txt-sm
         Asked by #{question.user.name}, #{question.user.work} on #{format_date(question.created_at)}
         %br/
-        - unless question.answers.blank?
+        - if question.answers.blank?
+          %p.card-text No answer for this question yet.
+        - else
           %span.text-muted First answered on #{format_date(question.answers.first.created_at)}
           %p.card-text= question.answers.first.short_version
-        - else
-          %p.card-text No answer for this question yet.
+          
+      - if current_user.admin?
+        = link_to question_path(question), method: 'delete', class: 'btn btn-outline-danger btn-sm' do 
+          Delete
+        %br 
 
       - if topic
         %span.badge.badge-primary.badge-pill Because you are interested in #{topic.name} <br>

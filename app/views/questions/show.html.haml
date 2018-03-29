@@ -7,7 +7,7 @@
       .dropdown
         %button.btn.btn-secondary.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"} Answer
         .dropdown-menu.col-12.my-2
-          = form_tag("/questions/#{@question.id}/answers", method: :post, class: "px-2") do
+          = form_tag("/questions/#{@question.slug}/answers", method: :post, class: "px-2") do
             .form-group
               = label_tag 'answer[body]', 'Write your answer'
               = text_area_tag 'answer[body]', nil, rows: 6, class: 'form-control'
