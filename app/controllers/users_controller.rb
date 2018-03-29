@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       flash[:success] = "User successfully registered."
       redirect_to root_path
     else
-      flash[:warning] = "Something wrong with your registration process"
+      flash[:warning] = @user.errors.full_messages.first
       render :new
     end
   end
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       flash[:success] = "User profile successfully updated"
       redirect_to user_path(@user)
     else
-      flash[:warning] = "Something went wrong with updating your profile"
+      flash[:warning] = @user.errors.full_messages.first
       render :edit
     end
   end
